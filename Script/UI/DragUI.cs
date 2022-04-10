@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//
+//      UI 드래그 스크립트
+//
+
 public class DragUI : MonoBehaviour, IDragHandler , IEndDragHandler
 {
     [SerializeField]Transform pivot;

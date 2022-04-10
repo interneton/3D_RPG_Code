@@ -8,6 +8,7 @@ public class QuestBox : MonoBehaviour
     NPC _questOwner; // 퀘스트 주인
     public QuestInfo _myInfo;
 
+    // 퀘스트 수행 업데이트 시켜주기
     public void QuestValueUpdate()
     {
         if (_myInfo != null)
@@ -25,6 +26,8 @@ public class QuestBox : MonoBehaviour
         }
     }
 
+
+    // 퀘스트 박스 정보 넣어주기
     public void SetInfo(QuestInfo info, NPC owner)
     {
         _myInfo = info;
@@ -32,6 +35,7 @@ public class QuestBox : MonoBehaviour
         transform.Find("Text").GetComponent<Text>().text = info._TextName;
     }
 
+    // 버튼 효과 => 오브젝트 선택시 정보 표시하기
     public void ClickToInfo()
     {
         if (_myInfo == null)

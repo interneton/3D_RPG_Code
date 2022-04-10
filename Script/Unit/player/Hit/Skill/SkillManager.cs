@@ -26,6 +26,7 @@ public class SkillManager : MonoBehaviour
     }
 
 
+    // 현재 선택된 스킬 정보
     public void curDragObj(SkillInfo info)
     {
         if (_curDragObj != null)
@@ -34,6 +35,7 @@ public class SkillManager : MonoBehaviour
         _curDragObj = info;
     }
 
+    // 스킬 슬롯창 스킬 정보 등록하기
     public void skillSlotAdd(int index) // 스킬 슬롯에 등록 되어 있는지 체크
     {
         if (_curDragObj == null)
@@ -53,6 +55,7 @@ public class SkillManager : MonoBehaviour
         _InSlot.Add(_curDragObj._SkillName, index);
     }
 
+    // 스킬 슬롯창에서 스킬 정보 삭제
     void InSlotRemove(int index)
     {
         var key = _InSlot.FirstOrDefault(x => x.Value == index).Key;
@@ -62,7 +65,7 @@ public class SkillManager : MonoBehaviour
     }
 
 
-
+    // 스킬 정보 가져와서 실행하기
     public void SkillLists(string skillName)
     {
         switch (skillName)
@@ -88,6 +91,7 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    // 스킬 실행
     void GetSkill(string skill)
     {
         Transform trans = _SkillPoolingObjParent.Find(skill);

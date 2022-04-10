@@ -73,7 +73,6 @@ public class PlayerStateMachine : MonoBehaviour
             RemoveEnemySelect();
         }
 
-
         MonsterFind();
 
         if (_enemySelect != null)
@@ -86,6 +85,7 @@ public class PlayerStateMachine : MonoBehaviour
     }
 
     #region  몬스터 관련
+    // 몬스터 인지 체크 후, 몬스터한테 근접하기
     void MonsterFind()
     {
         if (Input.GetMouseButtonDown(0) && _player._curWeaponType != WeaponType.Normal) // 왼쪽마우스
@@ -118,6 +118,8 @@ public class PlayerStateMachine : MonoBehaviour
             }
         }
     }
+
+    // 몬스터한테 달라 붙기
     void MoveLerpToMonster()
     {
         float _dis = Vector3.Distance(_enemySelect.transform.position, transform.position);
@@ -128,6 +130,7 @@ public class PlayerStateMachine : MonoBehaviour
             _IsDistance = false;
     }
 
+    // 적 선택 해제
     void RemoveEnemySelect()
     {
         _enemySelect = null;
@@ -135,12 +138,7 @@ public class PlayerStateMachine : MonoBehaviour
         _IsLookRotate = false;
     }
 
-    #region 타겟 관련 함수
-    void StopFollowingTarget()
-    {
-        _select = null;
-    }
-
+    // 몬스터 바라보기
     void Facetarget(Transform dirTrans, bool playing = false)
     {
         Vector3 direction = (dirTrans.position - transform.position).normalized;
@@ -154,10 +152,9 @@ public class PlayerStateMachine : MonoBehaviour
         }
     }
     #endregion
-    #endregion
 
-    #region State 무기 상태 체인지
-    public WeaponType WeaponAnimChange(WeaponType newState)
+    // 무기 상태 애니메이션으로 전환
+    public WeaponType WeaponStateTrue(WeaponType newState)
     {
         if (_player._curWeaponType != newState)
         {
@@ -173,7 +170,9 @@ public class PlayerStateMachine : MonoBehaviour
 
         return _player._curWeaponType;
     }
-    public void ExitStateMachine(WeaponType nowState)
+
+    // 무기 상태 애니메이션 끄고, 일반 상태로 전환
+    public void WeaponStateFalse(WeaponType nowState)
     {
         if (nowState != WeaponType.Normal)
         {
@@ -191,8 +190,7 @@ public class PlayerStateMachine : MonoBehaviour
         _player._curWeaponType = WeaponType.Normal;
     }
 
-    #endregion
-
+    // 현재 선택한 인터랙터블 객체 받아오기
     void setSelect(Interactable newSelect)
     {
         if (newSelect != _select)
@@ -206,15 +204,17 @@ public class PlayerStateMachine : MonoBehaviour
         newSelect.SelectTrans(transform);
     }
 
+    // 선택한 인터랙터블 객체 삭제
     public void RemoveSelect()
     {
         if (_select != null)
             _select.NullSelectTrans();
 
         _select = null;
-        StopFollowingTarget();
     }
 
+
+    // 플레이어 Idle, Move, Attack, Hit , SKill , Quest 상태 변경
     public void Player_StateChange(State newState)
     {
         if (_player._state != newState)
@@ -225,12 +225,15 @@ public class PlayerStateMachine : MonoBehaviour
                 _characterLogic.VelocityZeroSetting();
         }
     }
+
+    // 플레이어 무기 타입 변경
     public void Player_WeaponTypeChange(WeaponType newWeapontype)
     {
         if (_player._curWeaponType != newWeapontype)
             _player._curWeaponType = newWeapontype;
     }
 
+    // 애니메이션 이벤트에서 실행
     public void StateIdleSet()
     {
         Player_StateChange(State.Idle);

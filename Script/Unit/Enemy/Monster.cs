@@ -101,6 +101,7 @@ public class Monster : MonoBehaviour
         SetHpbarPos();
     }
 
+    // 몬스터 정보 받아오기
     private void MonsterInfoInit()
     {
         _player = GameManager.Instance._player;   // 타겟
@@ -131,6 +132,7 @@ public class Monster : MonoBehaviour
         _MyHpObject.SetActive(false);
         HpbarRefresh(); // 체력바 초기화
     }
+    // 체력 업데이트
     public void HpbarRefresh()
     {
         _HpBar.value = ((float)curHp / (float)maxHp);
@@ -154,6 +156,7 @@ public class Monster : MonoBehaviour
         }
     }
 
+    // 체력 UI , 플레이어 거리 체크해서 켜고, 끄기
     public void SetHpbarPos()
     {
         if (_Targetdistance >= 15 && _MyHpObject.activeSelf == true || _MonsterCT._beHaviour_State == BehaviourTree.DEATH) // 거리가 멀어지면  꺼주기
@@ -163,7 +166,7 @@ public class Monster : MonoBehaviour
                 _MyHpObject.SetActive(true);
     }
 
-    public void ItemDrop() // 지정된 아이템 랜덤으로 드롭하기
+    public void ItemDrop() // 리스트에 지정된 아이템 랜덤으로 드롭하기
     {
         int rand = Random.Range(0, _itemDrop.Count);
         GameObject Instance = Instantiate(_itemDrop[rand], transform);
@@ -171,7 +174,8 @@ public class Monster : MonoBehaviour
         Instance.transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
     }
 
-    public void AttackColDelay(int show)    // 어택 박스 활성화 == > 1 활성 0 비활성
+    // 애니메이션 이벤트에서 실행 =>   어택 박스 활성화 == > 1 활성 0 비활성 
+    public void AttackColDelay(int show)    
     {
         if (_attackCol != null)
         {

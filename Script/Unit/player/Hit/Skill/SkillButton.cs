@@ -27,6 +27,7 @@ public class SkillButton : MonoBehaviour, IDropHandler
             InputSKill();
     }
 
+    // 스킬 버튼에 스킬 정보 받아오기
     void SetInfo(SkillInfo skillinfo)
     {
         _MySkill = skillinfo;
@@ -37,6 +38,7 @@ public class SkillButton : MonoBehaviour, IDropHandler
         ButtonDelegate();
     }
 
+    // 스킬 버튼 창 초기화
     public void SetInfoNull()
     {
         if (_MySkill != null)
@@ -44,12 +46,12 @@ public class SkillButton : MonoBehaviour, IDropHandler
             _myBT = null;
             _MySkill = null;
 
-
             Image iconImage = transform.Find("On").GetComponent<Image>();
             iconImage.enabled = false;
         }
     }
 
+    // 스킬 버튼 누르면 실행
     public void ButtonDelegate()
     {
         _myBT = GetComponent<Button>();
@@ -59,6 +61,7 @@ public class SkillButton : MonoBehaviour, IDropHandler
         });
     }
 
+    // 버튼 효과
     void InputSKill() // 스킬 입력
     {
         if (_MySkill != null && _MySkill._IsCoolTime == false
@@ -75,7 +78,7 @@ public class SkillButton : MonoBehaviour, IDropHandler
         }
     }
 
-
+    // 스킬 쿨타임 계산하기
     IEnumerator _CoolTimer()
     {
         float Timer = _MySkill._SkillCoolTimer;
@@ -95,6 +98,7 @@ public class SkillButton : MonoBehaviour, IDropHandler
         }
     }
 
+    // 스킬 버튼에 드롭시 실행
     public void OnDrop(PointerEventData eventData)
     {
         if (_MySkill != null)

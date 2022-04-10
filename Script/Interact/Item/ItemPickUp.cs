@@ -1,5 +1,9 @@
 using UnityEngine;
 
+//
+//          아이템 스크립트
+//
+
 public class ItemPickUp : Interactable
 {
     [SerializeField] float _upForce = 1f;
@@ -28,6 +32,7 @@ public class ItemPickUp : Interactable
         Init();
     }
 
+    // 몬스터가 드롭 할때 몬스터 정보를 받아와서 아이템 능력치를 랜덤으로 적용
     void Init()
     {
         _Owner = transform.parent.GetComponent<Monster>();

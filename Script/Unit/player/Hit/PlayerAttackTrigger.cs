@@ -19,6 +19,7 @@ public class PlayerAttackTrigger : MonoBehaviour
         _player = GameManager.Instance._player;
     }
 
+    // 치명타율 계산해서 현재 데미지로 환산
     public virtual int CurDamage()
     {
         int criRate = Random.Range(0, 100);

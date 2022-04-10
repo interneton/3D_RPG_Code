@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//
+//          슬롯중에 인벤토리 슬롯 스크립트
+//
+
 public class InvenSlot : ItemSlot
 {
     public override void useButton()

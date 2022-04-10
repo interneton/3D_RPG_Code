@@ -46,6 +46,7 @@ public class PlayerDamageTrigger : MonoBehaviour
         Invoke("ResetHitObject", 0.2f);
     }
 
+    // 히트 시 파티클 재생
     void BloodParticleOrder(Collider other)
     {
         _hitParticle[i].transform.forward = other.transform.forward;

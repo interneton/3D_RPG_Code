@@ -16,6 +16,7 @@ public class StatsUI : MonoBehaviour
 
     public Slider _PlayerHpBar;
 
+    // 모든 스텟창 업데이트
     public void StatsInfo_AllUpdate()
     {
         Player player = GameManager.Instance._player;
@@ -26,6 +27,7 @@ public class StatsUI : MonoBehaviour
         HpSliderUpdate(player._myStats.curHp, player._myStats.maxHp);
     }
 
+    // 스텟 창 HP 업데이트
     public void StatsInfo_HpUpdate()
     {
         Player player = GameManager.Instance._player;
@@ -34,6 +36,8 @@ public class StatsUI : MonoBehaviour
 
     }
 
+
+    // 플레이어 모든 HP 관련 기능 업데이트
     public void HpSliderUpdate(float curHp, float maxHp)
     {
         StatsInfo_HpUpdate();

@@ -53,7 +53,7 @@ public class UIManger : MonoBehaviour
         Inputkey_OpenUI();
 
         #region 인벤토리가 켜져있을때 활성화
-
+        // 아이템 슬롯을 가진 UI 가 켜져있을때만 팝업 켜기
         if (_inventoryUI.gameObject.activeSelf || _QuestUI.gameObject.activeSelf
             || _EquipSettings.gameObject.activeSelf)
         {
@@ -74,6 +74,7 @@ public class UIManger : MonoBehaviour
         #endregion
     }
 
+    // UI 오브젝트 Input 모음
     private void Inputkey_OpenUI()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -104,7 +105,7 @@ public class UIManger : MonoBehaviour
 
 
 
-
+    // UI 오브젝트 켜기, 끄기
     public void SequenceUI(GameObject UI)
     {
         if (UI != null)

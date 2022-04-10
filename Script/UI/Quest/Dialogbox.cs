@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//
+//          퀘스트, 대화 관련 스크립트
+//
+
 public class Dialogbox : MonoBehaviour
 {
 

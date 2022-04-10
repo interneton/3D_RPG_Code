@@ -19,6 +19,7 @@ public class MonsterAttackTrigger : MonoBehaviour
         _monster = transform.parent.parent.GetComponent<Monster>();
     }
 
+    // 치명타율 계산해서 현재 데미지로 변환하기
     public virtual int CurDamage()
     {
         int criRate = Random.Range(0, 100);

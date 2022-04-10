@@ -10,6 +10,7 @@ public class HitStop : MonoBehaviour
     [SerializeField] Transform _shakeCam;
     [SerializeField] Vector3 _shake;
 
+    // 히트 시 시간 정지시키기
     public void StopTime()
     {
         if (!_stop)
@@ -22,6 +23,8 @@ public class HitStop : MonoBehaviour
         }
     }
 
+
+    // 다시 재개하기
     IEnumerator ReturnTimeScale()
     {
         yield return new WaitForSecondsRealtime(_stopTime);

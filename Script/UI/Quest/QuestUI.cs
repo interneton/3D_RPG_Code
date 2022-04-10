@@ -16,7 +16,7 @@ public class QuestUI : MonoBehaviour
 
 
 
-
+    // 퀘스트 받았을 경우 퀘스트 오브젝트 생성해서 UI에 표시
     public GameObject NewInstance()
     {
         if (_QuestBox_Parents == null || _QuestBoxPrefab == null)
@@ -26,6 +26,7 @@ public class QuestUI : MonoBehaviour
         return obj;
     }
 
+    // 퀘스트 수행 정보 출력하기
     public void Quest_ShowInfo(QuestInfo info, NPC npc, bool Isupdate = false)
     {
         _Npc_Name_text.text = npc._Name;
@@ -46,6 +47,7 @@ public class QuestUI : MonoBehaviour
         }
     }
 
+    // 퀘스트 몬스터와 같은지 체크해서 퀘스트 수행 현황에 더해주기
     public void QuestUpdate(MonsterName monsterType)
     {
         QuestBox[] Allquests = _QuestBox_Parents.GetComponentsInChildren<QuestBox>();
@@ -61,6 +63,8 @@ public class QuestUI : MonoBehaviour
         Debug.Log("몬스터 사냥 적용");
     }
 
+
+    // 퀘스트 UI 정보 표시창 리셋하기
     public void QuestUIReset()
     {
         _Npc_Name_text.text = "";

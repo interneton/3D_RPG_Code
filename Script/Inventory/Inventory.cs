@@ -6,6 +6,10 @@ using Newtonsoft.Json;
 using System;
 using System.IO;
 
+//
+//          플레이어 기본 공격에 들어갈 스크립트
+//
+
 [Serializable]
 public class SpriteIcon
 {
@@ -100,12 +104,12 @@ public class Inventory : MonoBehaviour
 
             if (MyEquipment[slot].myItem._Type.Trim() == WeaponType.OneHand.ToString())
             {
-                GameManager.Instance._player._stateMachine.ExitStateMachine(WeaponType.OneHand);
+                GameManager.Instance._player._stateMachine.WeaponStateFalse(WeaponType.OneHand);
                 Destroy(GameManager.Instance._player._RightHand.GetChild(0).gameObject);
             }
             if (MyEquipment[slot].myItem._Type.Trim() == WeaponType.TwoHand.ToString())
             {
-                GameManager.Instance._player._stateMachine.ExitStateMachine(WeaponType.TwoHand);
+                GameManager.Instance._player._stateMachine.WeaponStateFalse(WeaponType.TwoHand);
 
                 Destroy(GameManager.Instance._player._LeftHand.GetChild(0).gameObject);
                 Destroy(GameManager.Instance._player._RightHand.GetChild(0).gameObject);
@@ -124,6 +128,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    // 아이템 있는지 체크후 있으면 이전 아이템 빼오고, 없으면 새 아이템 장비창에 등록
     public void OldItemAndNewItemChange(int index, Item newItem)
     {
         Unequip(index);
@@ -134,13 +139,13 @@ public class Inventory : MonoBehaviour
 
         if (newItem._Type.Trim() == WeaponType.OneHand.ToString())
         {
-            GameManager.Instance._player._stateMachine.WeaponAnimChange(WeaponType.OneHand);
+            GameManager.Instance._player._stateMachine.WeaponStateTrue(WeaponType.OneHand);
             GameObject obj = Resources.Load("OneHand") as GameObject;
             Instantiate(obj, GameManager.Instance._player._RightHand);
         }
         if (newItem._Type.Trim() == WeaponType.TwoHand.ToString())
         {
-            GameManager.Instance._player._stateMachine.WeaponAnimChange(WeaponType.TwoHand);
+            GameManager.Instance._player._stateMachine.WeaponStateTrue(WeaponType.TwoHand);
             GameObject obj = Resources.Load("OneHand") as GameObject;
             Instantiate(obj, GameManager.Instance._player._RightHand);
             Instantiate(obj, GameManager.Instance._player._LeftHand);

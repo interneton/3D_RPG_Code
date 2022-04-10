@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//
+//          플레이어 기본 공격시 발생하는 스크립트
+//
+
 public class MeleAttack : PlayerAttackTrigger
 {
-    [SerializeField] HitStop _hitstop;
+    [SerializeField] 
+    HitStop _hitstop;
 
     protected override void Start()
     {

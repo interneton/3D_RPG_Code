@@ -37,10 +37,10 @@ public class MonsterController : MonoBehaviour
 
         if (_MyCollider != null)
             _MyCollider.enabled = true;
-
     }
 
 
+    // 머터리얼 색깔 바꾸는 함수
     void RenderingChange(int mode, int order)
     {
         switch (order)
@@ -92,6 +92,7 @@ public class MonsterController : MonoBehaviour
         }
 
     }
+
     public void Anim_Attack(int number)
     {
         ChangeBehaviourTree(BehaviourTree.ATTACK);
@@ -103,12 +104,14 @@ public class MonsterController : MonoBehaviour
         else if (number == 2)
             anim.Play("Attack03");
     }
+    
     public void Anim_Hit()
     {
         ChangeBehaviourTree(BehaviourTree.HIT);
         Change_cur_Combat(MonsterState.COMBAT);
         anim.Play("Hit");
     }
+
     public void Anim_Die()
     {
         _monster.ItemDrop();
@@ -116,6 +119,8 @@ public class MonsterController : MonoBehaviour
         _MyCollider.enabled = false;
         anim.Play("Die");
     }
+
+    // 죽었을시, 머터리얼 색깔 투명하게 바꾸기
     IEnumerator Die()
     {
         yield return new WaitForSeconds(1.0f);
@@ -135,6 +140,8 @@ public class MonsterController : MonoBehaviour
         RenderingChange(1, 2);
 
     }
+
+    // 데미지 처리
     public void OnDamage(int damage, float dmgRate)
     {
         int _hp = _monster.curHp;
@@ -163,6 +170,7 @@ public class MonsterController : MonoBehaviour
 
     }
 
+    // 데미지 처리 텍스트
     int TextCount = 0;
     private void OnDmgText(int dmg, float dmgRate)
     {
@@ -176,17 +184,21 @@ public class MonsterController : MonoBehaviour
         TextCount++;
     }
 
+    // 몬스터 Idle, Move, Attack , Hit , Death  상태 전환
     public void ChangeBehaviourTree(BehaviourTree newTree)
     {
         if (_beHaviour_State != newTree)
             _beHaviour_State = newTree;
     }
+    
+    // 전투 , 비전투 상태 전환
     public void Change_cur_Combat(MonsterState newCombat)
     {
         if (_curState != newCombat)
             _curState = newCombat;
     }
 
+    // 애니메이션 이벤트에 적용
     public void AnimationEventIdleState()
     {
         ChangeBehaviourTree(BehaviourTree.IDLE);

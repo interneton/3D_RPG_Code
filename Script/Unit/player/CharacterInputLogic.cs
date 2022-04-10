@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
 
-
+//
+//          플레이어 이동, 공격 스크립트
+//
 
 public class CharacterInputLogic: MonoBehaviour
 {

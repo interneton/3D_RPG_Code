@@ -10,6 +10,7 @@ public class SkillAttackTrigger : PlayerAttackTrigger
     [SerializeField] protected float _maxCri;
 
 
+    // 스킬 데미지 처리 ( 플레이어 치명타율 + 플레이어 공격력)
     public override int CurDamage()
     {
         int criRate = Random.Range(0, 100);

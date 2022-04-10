@@ -7,6 +7,7 @@ public class Lightning : SkillPlaying
     [SerializeField]
     GameObject _Rangeobj;
 
+    // 라이트닝 스킬 사용시
     protected override IEnumerator _SkillUsing()
     {
         transform.parent = _parent;

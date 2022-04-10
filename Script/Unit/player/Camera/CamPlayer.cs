@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+//
+//          플레이어어 카메라
+//
+
 public class CamPlayer : MonoBehaviour
 {
     public Transform objectTofollow; // 따라가야할 오브젝트 정보

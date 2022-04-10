@@ -14,6 +14,8 @@ public class MonsterDamageTrigger : MonoBehaviour
 
     List<int> WeaponId = new List<int>();
     int i = 0;
+
+    // 몬스터 데미지 처리
     private void OnTriggerEnter(Collider other)
     {
         if (!other.gameObject.CompareTag("PlayerAttack") || _monster_controller.m_monster.curHp <= 0)
@@ -41,6 +43,7 @@ public class MonsterDamageTrigger : MonoBehaviour
         Invoke("ResetHitObject", 0.2f);
     }
 
+    // 파티클 피 효과
     void BloodParticleOrder(Collider other)
     {
         _bloodParticle[i].transform.forward = other.transform.forward;

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+//
+//      퀘스트 관리 스크립트
+//
+
 [Serializable]
 public class QuestInfo
 {
@@ -25,6 +29,7 @@ public class QuestList : MonoBehaviour
     public List<QuestBox> _curQuestlists = new List<QuestBox>();
 
 
+    // 퀘스트 인덱스 가져오기
     public QuestInfo QuestIndex(int index)
     {
         foreach (QuestInfo item in _questLists)

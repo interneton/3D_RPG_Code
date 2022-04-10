@@ -28,11 +28,12 @@ public class SkillPlaying : MonoBehaviour
 
     }
 
-
+    // 스킬 실행하기
     public void Playing()
     {
         StartCoroutine("_SkillUsing");
     }
+
     protected virtual IEnumerator _SkillUsing()
     {
         SkillManager.Instance._skilleffect[_skillEffectIndex]._effect.Play();

@@ -68,6 +68,7 @@ public class MonsterAI : MonoBehaviour
 
     }
 
+    // 전투시 실행
     void Move_Combat()
     {
         targetPos = GameManager.Instance._player.transform.position;
@@ -96,6 +97,7 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
+    // 비전투시 실행
     void Move_NonCombat()
     {
         if (targetDis <= 3) // 제자리로 돌아왔을때
@@ -141,6 +143,7 @@ public class MonsterAI : MonoBehaviour
 
     }
 
+    // 애니메이션 이벤트로 공격 실행
     public void Enemy_Atk()
     {
         if (monsteranimCT._beHaviour_State == BehaviourTree.HIT)
@@ -163,6 +166,7 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
+    // 어택 딜레이
     IEnumerator AttackDelay()
     {
         while (true)
@@ -175,7 +179,7 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
-
+    // 살아있을 경우 코루틴으로 로직 동작
     IEnumerator EnemyRoamingAI()
     {
         yield return new WaitUntil(() => monsteranimCT != null);
@@ -213,6 +217,7 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
+    // 플레이어 방향 바라보기
     void LookRotation()
     {
         if (monsteranimCT._beHaviour_State != BehaviourTree.ATTACK)
@@ -227,6 +232,7 @@ public class MonsterAI : MonoBehaviour
         }
     }
 
+    // 애니메이션 이벤트에서 스피드 초기화
     public void NavSpeedSetting(float speed)
     {
         nav.speed = speed;
