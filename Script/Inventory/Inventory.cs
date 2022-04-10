@@ -70,8 +70,6 @@ public class Inventory : MonoBehaviour
     public List<SpriteIcon> _ItemSpriteIcon;
     public List<SpriteIcon> _equipSpriteIcon;
 
-    List<Item> newList;
-
     private void Start()
     {
 
@@ -93,10 +91,6 @@ public class Inventory : MonoBehaviour
                     Unequip(i);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-            SaveItemData();
-
     }
 
     public void Unequip(int slot)   // «ÿ¥Á ΩΩ∑‘ æ∆¿Ã≈€ ª©±‚
@@ -125,6 +119,8 @@ public class Inventory : MonoBehaviour
             MyEquipment[slot].myItem = new Item();
 
             GameManager.Instance._EquipStats.StatsInfo_AllUpdate();
+
+            SaveItemData();
         }
     }
 
@@ -187,7 +183,7 @@ public class Inventory : MonoBehaviour
 
     public void LoadItemData()
     {
-        newList = new List<Item>();
+        List<Item> newList = new List<Item>();
 
         string jdata = File.ReadAllText(Application.dataPath + "/Resources/MyItemData.txt");
         newList = JsonConvert.DeserializeObject<List<Item>>(jdata);
@@ -203,7 +199,7 @@ public class Inventory : MonoBehaviour
 
     public void SaveItemData()
     {
-        newList = new List<Item>();
+        List<Item>  newList = new List<Item>();
         for (int i = 0; i < InvenSlots.Length; i++)
             newList.Add(InvenSlots[i].myItem);
 

@@ -26,9 +26,8 @@ public class MonsterAttackTrigger : MonoBehaviour
         if (criRate < 50)
             _dmgRate = Random.Range(1.5f, 2.5f);
         else
-        {
             _dmgRate = Random.Range(0.8f, 1.2f);
-        }
+
 
         _dmg = (int)(_monster.damage1 * _dmgRate);
 

@@ -186,4 +186,9 @@ public class MonsterController : MonoBehaviour
         if (_curState != newCombat)
             _curState = newCombat;
     }
+
+    public void AnimationEventIdleState()
+    {
+        ChangeBehaviourTree(BehaviourTree.IDLE);
+    }
 }

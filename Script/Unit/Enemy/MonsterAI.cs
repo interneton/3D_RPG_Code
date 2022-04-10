@@ -143,6 +143,9 @@ public class MonsterAI : MonoBehaviour
 
     public void Enemy_Atk()
     {
+        if (monsteranimCT._beHaviour_State == BehaviourTree.HIT)
+            return;
+
         if (monsteranimCT._curState == MonsterState.COMBAT)
         {
             if (targetDis <= 3 && !IsCoroutine)

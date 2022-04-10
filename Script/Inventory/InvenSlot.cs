@@ -46,5 +46,6 @@ public class InvenSlot : ItemSlot
                 break;
         }
         myItem = new Item();
+        Inventory._instance.SaveItemData();
     }
 }

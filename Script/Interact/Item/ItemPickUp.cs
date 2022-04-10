@@ -60,6 +60,7 @@ public class ItemPickUp : Interactable
         if (IsPickUp)
         {
             Debug.Log("주웠습니다");
+            Inventory._instance.SaveItemData();
             Destroy(this.gameObject);
         }
 
@@ -67,7 +68,7 @@ public class ItemPickUp : Interactable
             Debug.Log("못주웠습니다");
     }
 
-    Item RandomItemStatsInit(Item newitem)
+    Item RandomItemStatsInit(Item newitem) // 아이템 능력치 랜덤 설정
     {
         int itemLevel = Random.Range(System.Convert.ToInt32(newitem._Level), _Owner.level + 1);
         newitem._Level = itemLevel.ToString();
@@ -79,7 +80,7 @@ public class ItemPickUp : Interactable
         newitem._Defend = Random.Range(itemDeffend, itemDeffend * itemLevel).ToString();
 
         float.TryParse(newitem._Critical, out float result);
-        newitem._Critical = Random.Range(result, result * itemLevel).ToString();
+        newitem._Critical = Random.Range(result, result * itemLevel).ToString("F2");
 
         return newitem;
     }
