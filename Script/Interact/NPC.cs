@@ -13,11 +13,8 @@ public class NPC : Interactable
     public override void Interact()
     {
         Debug.Log("NPC " + _Name);
-        if (_MyQuest != null)
-        {
-            GameManager.Instance._player._state = State.Quest;
-            DialogBoxOn();
-        }
+        GameManager.Instance._player._state = State.Quest;
+        DialogBoxOn();
 
     }
     protected override void Start()

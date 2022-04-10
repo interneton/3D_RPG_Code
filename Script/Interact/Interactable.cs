@@ -71,7 +71,7 @@ public class Interactable : MonoBehaviour
         _player = null;
         _isSelect = false;
         _AbleToInteracted = false;
-        _camPlayer.maxDistance = 4f;
+        _camPlayer.maxDistance = 6f;
         StartCoroutine("ForwardToMyPos");
     }
 

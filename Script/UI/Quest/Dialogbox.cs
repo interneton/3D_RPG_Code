@@ -22,8 +22,11 @@ public class Dialogbox : MonoBehaviour
         _showQuest = quest;
         _Name.text = _npc._Name;
         gameObject.SetActive(true);
+        transform.Find("CloseBT").gameObject.SetActive(false);
+        transform.Find("ClearBT").gameObject.SetActive(false);
 
-        if(Trans._Questindex == -1)
+
+        if (Trans._Questindex == -1)
         {
             Button_CloseOrOk(false, false);
             _DescText.text = "진행 가능한 퀘스트가 없습니다";
@@ -63,7 +66,6 @@ public class Dialogbox : MonoBehaviour
             {
                 if (quest._myInfo._Index == _showQuest._Index)
                 {
-                    
                     GameManager.Instance._questLists._curQuestlists.Remove(quest);
 
                     UIManger.Instance._QuestUI.GetComponent<QuestUI>().QuestUIReset();
@@ -98,6 +100,7 @@ public class Dialogbox : MonoBehaviour
 
         if (_textCount < _showQuest._desc.Count)
         {
+            Button_CloseOrOk(false, true);
             StopCoroutine("Text_Typing");
             StartCoroutine("Text_Typing");
             _textCount++;
